@@ -31,6 +31,10 @@
    const component = componentsByType.find(elem => elem.type === type)
    return component?component.component:null
   }
+
+  function onValidityChange(e) {
+    console.log(e.type, e.detail)
+  }
 </script>
 
 <div class="main">
@@ -42,9 +46,13 @@
       {#each questionnaire.questions as question, i}
         <QuestionContainer title={getTitle(question.title)} mandatory={question.mandatory}>
           <div slot="question">
-            <svelte:component {question}
-            questionnaireKey={questionnaire.key}
-            {getTitle} this={getComponent(question.type)}/>
+            <svelte:component 
+              {question}
+              questionnaireKey={questionnaire.key}
+              {getTitle} 
+              this={getComponent(question.type)}
+              on:valueChanged = {onValidityChange}
+            />
           </div>
         </QuestionContainer>
       {/each}

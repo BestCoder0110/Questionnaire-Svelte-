@@ -15,7 +15,7 @@ let questionnaire =
               "ka": "ჰო კარგად ხარ?"
           },
           "key": "are-you-ok-boolean",
-          "answer": true,
+          //"answer": true,
           "mandatory" : true
       },
       {
@@ -44,7 +44,7 @@ let questionnaire =
                   "key": "are-you-ok-options_no"
               }
           ],
-          "answer": "are-you-ok-options_yes"
+          //"answer": "are-you-ok-options_yes"
       },
       {
           "type": "multiple-choice",
@@ -80,10 +80,10 @@ let questionnaire =
                   "key": "other"
               }
           ],
-          "answer": [
-              "id-card",
-              "driving-licence"
-          ]
+        //   "answer": [
+        //       "id-card",
+        //       "driving-licence"
+        //   ]
       }
   ],
   "status": "approved"
