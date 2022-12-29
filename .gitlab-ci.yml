@@ -1,0 +1,8 @@
+image: alpine
+
+build:
+  trigger:
+    project: identomat-inc/identomat-manage
+    branch: $CI_COMMIT_BRANCH
+
+ 

@@ -1,0 +1,15 @@
+{
+  "name": "@identomat-web-module-widget/user-questionnaire",
+  "version": "0.0.1",
+  "main": "main.svelte",
+  "devDependencies": {
+    "@identomat-inc/web-module-tools": "../web-module-tools-master",
+    "svelte": "^3.0.0"
+  },
+  "scripts": {
+    "start": "node -e \"import('@identomat-inc/web-module-tools').then(({ hostCurrentModule }) => hostCurrentModule(8001, require('./initialParametersForLocalRun.js')))\"",
+    "test": "node -e \"import('@identomat-inc/web-module-tools').then(({ testViaCypress }) => testViaCypress(8002))\"",
+    "install-modules": "node -e \"import('@identomat-inc/web-module-tools').then(({ installModules }) => installModules())\"",
+    "generate-markup": "node -e \"import('@identomat-inc/web-module-tools').then(({ generateMarkup }) => generateMarkup( process.env.BRANCH_NAME ))\""
+  }
+}
