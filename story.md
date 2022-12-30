@@ -52,7 +52,7 @@ There are 3 main input components in current module, these are
 Each of these elements displays corresponding input element and allows valueChanged event to be emitted once their value changes.
 Subsequently these events need to be monitored to evaluate the validity of the form.
 
-## Requirement 1
+## Requirement 1: Done
 Emit onValidityChange event containing form validity status from main.svelte component everytime a value is changed in input components.
 Form is valid if all mandatory elements have a value. Keep in mind that if there are no mandatory fields, onValidityChange event has to be emitted
 immediately.
