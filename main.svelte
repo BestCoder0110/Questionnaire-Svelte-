@@ -6,10 +6,30 @@
   import Checkbox from "./checkbox.svelte";
   import Radio from "./radio.svelte";
 
-  onMount(() => {});
+  onMount(() => {
+    questions = questionnaire.questions;
+    for (let i = 0; i < questions.length; i++) {
+        questions[i].value = null;
+    }
+  });
 
+  let questions = [];
+  let isValidate = false;
   export let questionnaire;
   export let language;
+
+  $: {
+    if(questions.length) {
+      let pass = false;
+      for (let i = 0; i < questions.length; i++) {
+       if(questions[i].mandatory && isEmpty(questions[i])) {
+         pass = true;
+         break;
+       }
+      }
+      isValidate = pass ? false : true;
+    }
+  }
 
   const componentsByType = [
     { type: 'boolean', component: Radio},
@@ -17,6 +37,10 @@
     { type: 'multiple-choice', component: Checkbox},
     { type: 'string', component: Input},
   ]
+
+  function isEmpty(data) {
+    return data.value === null || data.value.length === 0;
+  }
 
   function getTitle(title) {
     if (!title) return "";
@@ -33,11 +57,19 @@
   }
 
   function onValidityChange(e) {
-    console.log(e.type, e.detail)
+    for (let i = 0; i < questions.length; i++) {
+      if(questions[i].key === e.detail.key) 
+        questions[i].value = e.detail.value
+    }
   }
 </script>
 
 <div class="main">
+  {#if isValidate}
+    Okay
+  {:else}
+    Wrong
+  {/if}
   <MainContainer
     title={getTitle(questionnaire.title)}
     description={questionnaire.description}
